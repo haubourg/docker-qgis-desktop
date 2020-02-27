@@ -16,6 +16,7 @@ docker run --rm \
     -v /tmp/.X11-unix:/tmp/.X11-unix \
     -e DISPLAY=unix$DISPLAY \
     -e HHHOME=${HOME} \
+    -e PGSERVICEFILE=${HOME}\.pg_service.conf
     --net=host \
     jancelin/docker-qgis-desktop
 # you can change this last line to pass  startup options to QGIS
