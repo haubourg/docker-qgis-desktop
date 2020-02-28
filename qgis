@@ -16,7 +16,7 @@ docker run --rm \
     -v /tmp/.X11-unix:/tmp/.X11-unix \
     -e DISPLAY=unix$DISPLAY \
     -e HHHOME=${HOME} \
-    -e PGSERVICEFILE=${HOME}\.pg_service.conf \
+    -e PGSERVICEFILE=${HOME}/.pg_service.conf \
     --net=host --privileged \
     qgis_local:3.12
     
