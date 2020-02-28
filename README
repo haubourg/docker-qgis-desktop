@@ -1,0 +1,27 @@
+# this recipe allows to build QGIS with docker and run it as a desktop application. 
+
+
+# How to build 
+
+checkout the branch dedicated to your QGIS version :
+
+`git checkout 3.10
+
+Build the image locally with the according version tag:
+
+`docker build -t     qgis_local:3.10 ./ `
+
+Copy the executable file that runs QGIS on your host:
+
+`cp qgis ~/APPS/QGIS3/qgis_docker_3.10`
+
+
+Create a desktop launcher pointing to this sh script
+
+Done
+
+ 
+# How to maintain and upgrade the image when QGIS upgrades ?
+
+Just rerun the docker build command
+
