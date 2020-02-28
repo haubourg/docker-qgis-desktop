@@ -18,7 +18,7 @@ docker run --rm \
     -e HHHOME=${HOME} \
     -e PGSERVICEFILE=${HOME}\.pg_service.conf \
     --net=host --privileged \
-    qgis_local:3.12
+    qgis_local:3.10
     
     #--configpath /home/${USER_NAME}/.local/share/QGIS/QGIS3/profiles/
 

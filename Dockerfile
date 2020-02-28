@@ -15,7 +15,7 @@ RUN apt-get install -y gnupg apt-transport-https ca-certificates
 # RUN gpg --export --armor 6B827C12C2D425E227EDCA75089EBE08314DF160 | apt-key add -
 
 # Add qgis.org repo
-RUN echo "deb http://qgis.org/ubuntu eoan main" >> /etc/apt/sources.list
+RUN echo "deb http://qgis.org/ubuntu-ltr eoan main" >> /etc/apt/sources.list
 RUN gpg --keyserver keyserver.ubuntu.com --recv 51F523511C7028C3
 RUN gpg --export --armor 51F523511C7028C3 | apt-key add -
 
