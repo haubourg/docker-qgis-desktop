@@ -13,6 +13,7 @@ USER_NAME=`basename $HOME`
 docker run --rm \
     -i -t \
     -v ${HOME}:/home/${USER_NAME} \
+    -v /data:/data \
     -v /tmp/.X11-unix:/tmp/.X11-unix \
     -e DISPLAY=unix$DISPLAY \
     -e HHHOME=${HOME} \
