@@ -14,6 +14,7 @@ docker run --rm \
     -i -t \
     -v ${HOME}:/home/${USER_NAME} \
     -v /tmp/.X11-unix:/tmp/.X11-unix \
+    -v /data:/data \
     -e DISPLAY=unix$DISPLAY \
     -e HHHOME=${HOME} \
     -e PGSERVICEFILE=${HOME}/.pg_service.conf \
