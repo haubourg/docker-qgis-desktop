@@ -5,7 +5,8 @@ ENV LANG C.UTF-8
 ARG DEBIAN_FRONTEND=noninteractive
 # debug traces for QT 
 ARG QT_DEBUG_PLUGINS=1
-
+# force update for nightly
+ARG FORCE_UPDATE=yes
 RUN apt-get -y update
 RUN apt-get install -y gnupg apt-transport-https ca-certificates
 
