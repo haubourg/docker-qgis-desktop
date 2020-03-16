@@ -13,10 +13,8 @@ GROUP_ID=`ls -lahn $HOME_NAME | grep $USER_NAME | awk {'print $4'}`
 
 groupadd -g $GROUP_ID qgis
 useradd --shell /bin/bash --uid $USER_ID --gid $GROUP_ID $USER_NAME
-# to add parameters, you can do the following
-# su $USER_NAME -c "/usr/bin/qgis --profiles-path  ${HOME}/mycustomprofilespath $*"
 
 # all the startup options can be shown by uncommenting this line:
-# su $USER_NAME -c "qgis --help"
+echo "Note : QGIS available startup options are : `su $USER_NAME -c qgis --help`"
 
 su $USER_NAME -c "/usr/bin/qgis $*"
