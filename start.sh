@@ -3,6 +3,8 @@
 # Put any tasks you would like to have carried
 # out when the container is first created here
 
+echo Your container args are: "$@"
+
 USER_NAME=`basename $HHHOME`
 HOME_NAME=`dirname $HHHOME`
 

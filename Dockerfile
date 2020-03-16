@@ -32,8 +32,11 @@ ENV LC_ALL fr_FR.UTF-8
 ENV LANG fr_FR.UTF-8
 ENV LANGUAGE fr_FR.UTF-8
 
-# Called when the Docker image is started in the container
-ADD start.sh /start.sh
-RUN chmod 0755 /start.sh
+# # Called when the Docker image is started in the container
 
-CMD /start.sh
+COPY ./start.sh /
+ENTRYPOINT ["/start.sh"]
+CMD []
+# ADD start.sh /start.sh
+RUN chmod 0755 /start.sh
+# CMD /start.sh
