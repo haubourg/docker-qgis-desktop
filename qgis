@@ -21,4 +21,4 @@ docker run --rm \
     --net=host --privileged \
     qgis_local:3.10     
 # to add parameters, you can launch with additional options :
-    # qgis_local:3.10 --profiles-path  ${HOME}/mycustomprofilespath $*"
+    # qgis_local:3.10 --profiles-path  ${HOME}/mycustomprofilespath $*
