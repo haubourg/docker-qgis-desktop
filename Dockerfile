@@ -5,8 +5,10 @@ ENV LANG C.UTF-8
 ARG DEBIAN_FRONTEND=noninteractive
 # debug traces for QT 
 ARG QT_DEBUG_PLUGINS=1
-# force update for nightly
-ARG FORCE_UPDATE=yes
+
+
+# LAYER 1
+
 RUN apt-get -y update
 RUN apt-get install -y gnupg apt-transport-https ca-certificates
 
@@ -32,8 +34,9 @@ ENV LC_ALL fr_FR.UTF-8
 ENV LANG fr_FR.UTF-8
 ENV LANGUAGE fr_FR.UTF-8
 
-# Called when the Docker image is started in the container
-ADD start.sh /start.sh
+# # Called when the Docker image is started in the container
+# this version with entry point allows to pass parameters to QGIS (like profiles_path or project, etc..)
+COPY ./start.sh /
+ENTRYPOINT ["/start.sh"]
+CMD []
 RUN chmod 0755 /start.sh
-
-CMD /start.sh
