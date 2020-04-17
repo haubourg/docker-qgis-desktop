@@ -21,7 +21,7 @@ docker run --rm \
     --net=host --privileged \
     qgis_local:3.x.master
     
-    #--configpath /home/${USER_NAME}/.local/share/QGIS/QGIS3/profiles/
+    # qgis_local:3.x.master --profiles-path  ${HOME}/OSLANDIA/projets_locaux/TIGRE_STEA/GITLAB_specifique_qgis/1507_05_stea_tigre7/qgis/dot_qgis3/global_config_test.ini  --profiles-path ${HOME}/OSLANDIA/projets_locaux/TIGRE_STEA/GITLAB_specifique_qgis/1507_05_stea_tigre7/qgis/dot_qgis3 ${HOME}/OSLANDIA/projets_locaux/TIGRE_STEA/GITLAB_specifique_qgis/1507_05_stea_tigre7/qgis/tigre7_maj.qgs $*
 
 # you can change this last line to pass  startup options to QGIS
 # If you want to use another location for qgis profile, you can do this for instance, using a .qgis2_docker directory instead of the default .qgis2 :
