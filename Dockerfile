@@ -19,8 +19,8 @@ RUN apt-get install -y gnupg apt-transport-https ca-certificates
 
 # Add qgis.org repo
 RUN echo "deb http://qgis.org/ubuntu eoan main" >> /etc/apt/sources.list
-RUN gpg --keyserver keyserver.ubuntu.com --recv 51F523511C7028C3
-RUN gpg --export --armor 51F523511C7028C3 | apt-key add -
+RUN gpg --keyserver keyserver.ubuntu.com --recv F7E06F06199EF2F2
+RUN gpg --export --armor F7E06F06199EF2F2 | apt-key add -
 
 # install QGIS
 RUN apt-get update && \

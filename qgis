@@ -19,6 +19,6 @@ docker run --rm \
     -e HHHOME=${HOME} \
     -e PGSERVICEFILE=${HOME}/.pg_service.conf \
     --net=host --privileged \
-    qgis_local:3.10     
+    qgis_local:3.14     
 # to add parameters, you can launch with additional options :
     # qgis_local:3.10 --profiles-path  ${HOME}/mycustomprofilespath $*
