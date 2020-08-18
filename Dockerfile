@@ -13,18 +13,18 @@ RUN apt-get -y update
 RUN apt-get install -y gnupg apt-transport-https ca-certificates
 
 # Add ubuntugis unstable repo
-RUN echo "deb http://ppa.launchpad.net/ubuntugis/ubuntugis-unstable/ubuntu bionic  main" >> /etc/apt/sources.list
+RUN echo "deb http://ppa.launchpad.net/ubuntugis/ubuntugis-unstable/ubuntu bionic main" >> /etc/apt/sources.list
 RUN gpg --keyserver keyserver.ubuntu.com --recv 6B827C12C2D425E227EDCA75089EBE08314DF160
 RUN gpg --export --armor 6B827C12C2D425E227EDCA75089EBE08314DF160 | apt-key add -
 
 # Add qgis.org repo
 RUN echo "deb http://qgis.org/ubuntugis-ltr bionic main" >> /etc/apt/sources.list
 RUN gpg --keyserver keyserver.ubuntu.com --recv F7E06F06199EF2F2
-RUN gpg --export --armor 51F523511C7028C3 | apt-key add -
+RUN gpg --export --armor F7E06F06199EF2F2 | apt-key add -
 
 # install QGIS
 RUN apt-get update && \
-    apt-get install  --no-install-recommends -y qgis qgis-plugin-grass \
+    apt-get install -y qgis qgis-plugin-grass python3-pandas\
     locales locales-all && \
     rm -rf /var/lib/apt/lists/*
 #--no-install-recommends
