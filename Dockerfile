@@ -1,4 +1,4 @@
-FROM ubuntu:eoan
+FROM ubuntu:bionic
 MAINTAINER Julien ANCELIN
 
 ENV LANG C.UTF-8
@@ -13,12 +13,12 @@ RUN apt-get -y update
 RUN apt-get install -y gnupg apt-transport-https ca-certificates
 
 # Add ubuntugis unstable repo
-# RUN echo "deb http://ppa.launchpad.net/ubuntugis/ubuntugis-unstable/ubuntu  focal main" >> /etc/apt/sources.list
-# RUN gpg --keyserver keyserver.ubuntu.com --recv 6B827C12C2D425E227EDCA75089EBE08314DF160
-# RUN gpg --export --armor 6B827C12C2D425E227EDCA75089EBE08314DF160 | apt-key add -
+RUN echo "deb http://ppa.launchpad.net/ubuntugis/ubuntugis-unstable/ubuntu  bionic main" >> /etc/apt/sources.list
+RUN gpg --keyserver keyserver.ubuntu.com --recv 6B827C12C2D425E227EDCA75089EBE08314DF160
+RUN gpg --export --armor 6B827C12C2D425E227EDCA75089EBE08314DF160 | apt-key add -
 
 # Add qgis.org repo
-RUN echo "deb http://qgis.org/ubuntu eoan main" >> /etc/apt/sources.list
+RUN echo "deb http://qgis.org/ubuntugis bionic main" >> /etc/apt/sources.list
 RUN gpg --keyserver keyserver.ubuntu.com --recv F7E06F06199EF2F2
 RUN gpg --export --armor F7E06F06199EF2F2 | apt-key add -
 
