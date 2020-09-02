@@ -4,7 +4,7 @@ MAINTAINER Julien ANCELIN
 ENV LANG C.UTF-8
 
 RUN apt-get -y update
-RUN apt-get install -y gnupg apt-transport-https ca-certificates
+RUN apt-get install -y gnupg apt-transport-https ca-certificates libqt5sql5-psql
 
 RUN echo "deb http://qgis.org/debian-nightly xenial main" >> /etc/apt/sources.list
 RUN gpg --keyserver keyserver.ubuntu.com --recv CAEB3DC3BDF7FB45
