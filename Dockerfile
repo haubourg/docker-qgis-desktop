@@ -10,7 +10,7 @@ ARG QT_DEBUG_PLUGINS=1
 # LAYER 1
 
 RUN apt-get -y update
-RUN apt-get install -y gnupg apt-transport-https ca-certificates
+RUN apt-get install -y gnupg apt-transport-https ca-certificates libqt5sql5-psql
 
 # Add ubuntugis unstable repo
 RUN echo "deb http://ppa.launchpad.net/ubuntugis/ubuntugis-unstable/ubuntu bionic main" >> /etc/apt/sources.list
