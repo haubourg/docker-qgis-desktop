@@ -24,7 +24,7 @@ RUN gpg --export --armor F7E06F06199EF2F2 | apt-key add -
 
 # install QGIS
 RUN apt-get update && \
-    apt-get install -y qgis qgis-plugin-grass python3-pandas\
+    apt-get install -y --no-install-recommends --no-install-suggests qgis qgis-plugin-grass python3-pandas\
     locales locales-all && \
     rm -rf /var/lib/apt/lists/*
 #--no-install-recommends
