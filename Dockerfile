@@ -14,6 +14,8 @@ RUN apt-get install -y gnupg apt-transport-https ca-certificates libqt5sql5-psql
 
 # Add ubuntugis unstable repo
 RUN echo "deb http://ppa.launchpad.net/ubuntugis/ubuntugis-unstable/ubuntu  bionic main" >> /etc/apt/sources.list
+
+
 RUN gpg --keyserver keyserver.ubuntu.com --recv 6B827C12C2D425E227EDCA75089EBE08314DF160
 RUN gpg --export --armor 6B827C12C2D425E227EDCA75089EBE08314DF160 | apt-key add -
 
@@ -24,7 +26,7 @@ RUN gpg --export --armor F7E06F06199EF2F2 | apt-key add -
 
 # install QGIS
 RUN apt-get update && \
-    apt-get install -y qgis qgis-plugin-grass python3-pandas\
+    apt-get install -y --no-install-recommends --no-install-suggests qgis qgis-plugin-grass python3-pandas\
     locales locales-all && \
     rm -rf /var/lib/apt/lists/*
 #--no-install-recommends
