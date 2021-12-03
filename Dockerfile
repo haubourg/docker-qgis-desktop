@@ -1,28 +1,30 @@
-FROM ubuntu:eoan
-MAINTAINER Julien ANCELIN
+ARG DISTRIBUTION_CODENAME=impish
 
+FROM ubuntu:${DISTRIBUTION_CODENAME}
+LABEL org.opencontainers.image.authors="regis.haubourg@gmail.com"
+
+# change key here if you get GPG error: http://qgis.org/ubuntu-nightly
+# the new key is available at https://www.qgis.org/fr/site/forusers/alldownloads.html#debian-ubuntu
+ARG QGIS_REPO_KEY=46B5721DBBD2996A
+
+ARG DISTRIBUTION_CODENAME
 ENV LANG C.UTF-8
 ARG DEBIAN_FRONTEND=noninteractive
 # debug traces for QT 
 ARG QT_DEBUG_PLUGINS=1
 # force update for nightly
 ARG FORCE_UPDATE=yes
-RUN apt-get -y update
-RUN apt-get install -y gnupg apt-transport-https ca-certificates
-
-# Add ubuntugis unstable repo
-# RUN echo "deb http://ppa.launchpad.net/ubuntugis/ubuntugis-unstable/ubuntu  focal main" >> /etc/apt/sources.list
-# RUN gpg --keyserver keyserver.ubuntu.com --recv 6B827C12C2D425E227EDCA75089EBE08314DF160
-# RUN gpg --export --armor 6B827C12C2D425E227EDCA75089EBE08314DF160 | apt-key add -
+RUN apt -y update
+RUN apt install -y gnupg apt-transport-https ca-certificates
 
 # Add qgis.org repo
-RUN echo "deb http://qgis.org/ubuntu-nightly eoan main" >> /etc/apt/sources.list
-RUN gpg --keyserver keyserver.ubuntu.com --recv 51F523511C7028C3
-RUN gpg --export --armor 51F523511C7028C3 | apt-key add -
+RUN echo "deb http://qgis.org/ubuntu-nightly ""$DISTRIBUTION_CODENAME"" main" >> /etc/apt/sources.list
+RUN gpg --keyserver keyserver.ubuntu.com --recv ${QGIS_REPO_KEY}
+RUN gpg --export --armor ${QGIS_REPO_KEY} | apt-key add -
 
 # install QGIS
-RUN apt-get update && \
-    apt-get install -y qgis qgis-plugin-grass \
+RUN apt update && \
+    apt install -y qgis qgis-plugin-grass \
     locales locales-all && \
     rm -rf /var/lib/apt/lists/*
 #--no-install-recommends
