@@ -1,5 +1,8 @@
-# this recipe allows to build QGIS with docker and run it as a desktop application. 
+# this recipe allows to build QGIS with docker and run it as a desktop application.
 
+This allows to have as much parallel versions as you like and choose carefully which base image and dependencies you want. 
+
+Some drawbacks however, you can't launch a file explorer or internet browser from QGIS, as there is no such thing in the guest container.  (If you know a way to take benefit of the host's ressources, please let me know)
 
 # How to build 
 
@@ -16,12 +19,16 @@ Copy the executable file that runs QGIS on your host:
 `cp qgis ~/APPS/QGIS3/qgis_docker_3.10`
 
 
-Create a desktop launcher pointing to this sh script
+Create a desktop launcher pointing to this sh script. the /launcher directory offers some .desktop templates. 
 
-Done
+Deploy it to your local folder (assuming using GNOME flavor):
+
+`cp launcher/qgis_3_22_release_docker.desktop ~/.local/share/applications/docker-qgis-3_22.desktop`
 
  
 # How to maintain and upgrade the image when QGIS upgrades ?
 
 Just rerun the docker build command
 
+From time to time dependencies and base image will change, as much as GPG key of QGIS repository. 
+These can be changed as parameters in the Dockerfile
