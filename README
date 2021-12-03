@@ -12,7 +12,7 @@ checkout the branch dedicated to your QGIS version :
 
 Build the image locally with the according version tag:
 
-`docker build -t     qgis_local:31.0 ./ `
+`docker build -t     qgis_local:qgis_3.x_master ./ `
 
 Copy the executable file that runs QGIS on your host:
 

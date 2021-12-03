@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.1
+Type=Application
+Name=QGIS docker master 3.x
+Icon=/home/regis/APPS/QGIS3/qgis3_ltr/share/icons/hicolor/32x32/apps/qgis.png
+Exec=~/.local/share/applications/qgis_3.x.master_docker.sh
+Terminal=true
+Actions=
+Categories=QGIS;
+StartupNotify=true
