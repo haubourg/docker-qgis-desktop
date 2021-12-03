@@ -1,6 +1,13 @@
-FROM ubuntu:focal
-MAINTAINER Julien ANCELIN
+ARG DISTRIBUTION_CODENAME=impish
 
+FROM ubuntu:${DISTRIBUTION_CODENAME}
+LABEL org.opencontainers.image.authors="regis.haubourg@gmail.com"
+
+# change key here if you get GPG error: http://qgis.org/ubuntu-nightly
+# the new key is available at https://www.qgis.org/fr/site/forusers/alldownloads.html#debian-ubuntu
+ARG QGIS_REPO_KEY=46B5721DBBD2996A
+
+ARG DISTRIBUTION_CODENAME
 ENV LANG C.UTF-8
 ARG DEBIAN_FRONTEND=noninteractive
 # debug traces for QT 
@@ -12,15 +19,15 @@ ARG QT_DEBUG_PLUGINS=1
 RUN apt-get -y update
 RUN apt-get install -y gnupg apt-transport-https ca-certificates libqt5sql5-psql
 
-# Add ubuntugis unstable repo
-RUN echo "deb http://ppa.launchpad.net/ubuntugis/ubuntugis-unstable/ubuntu  focal main" >> /etc/apt/sources.list
-RUN gpg --keyserver keyserver.ubuntu.com --recv 6B827C12C2D425E227EDCA75089EBE08314DF160
-RUN gpg --export --armor 6B827C12C2D425E227EDCA75089EBE08314DF160 | apt-key add -
+# # Add ubuntugis unstable repo
+# RUN echo "deb http://ppa.launchpad.net/ubuntugis/ubuntugis-unstable/ubuntu  focal main" >> /etc/apt/sources.list
+# RUN gpg --keyserver keyserver.ubuntu.com --recv 6B827C12C2D425E227EDCA75089EBE08314DF160
+# RUN gpg --export --armor 6B827C12C2D425E227EDCA75089EBE08314DF160 | apt-key add -
 
 # Add qgis.org repo
-RUN echo "deb http://qgis.org/ubuntugis focal main" >> /etc/apt/sources.list
-RUN gpg --keyserver keyserver.ubuntu.com --recv 46B5721DBBD2996A
-RUN gpg --export --armor 46B5721DBBD2996A | apt-key add -
+RUN echo "deb http://qgis.org/ubuntu ""$DISTRIBUTION_CODENAME"" main" >> /etc/apt/sources.list
+RUN gpg --keyserver keyserver.ubuntu.com --recv ${QGIS_REPO_KEY}
+RUN gpg --export --armor ${QGIS_REPO_KEY} | apt-key add -
 
 # install QGIS
 RUN apt-get update && \
