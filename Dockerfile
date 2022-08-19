@@ -1,3 +1,4 @@
+ARG DISTRIBUTION_CODENAME=jammy
 
 FROM ubuntu:${DISTRIBUTION_CODENAME}
 LABEL org.opencontainers.image.authors="regis.haubourg@gmail.com"
