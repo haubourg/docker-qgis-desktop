@@ -1,11 +1,10 @@
-ARG DISTRIBUTION_CODENAME=impish
 
 FROM ubuntu:${DISTRIBUTION_CODENAME}
 LABEL org.opencontainers.image.authors="regis.haubourg@gmail.com"
 
 # change key here if you get GPG error: http://qgis.org/ubuntu-nightly
 # the new key is available at https://www.qgis.org/fr/site/forusers/alldownloads.html#debian-ubuntu
-ARG QGIS_REPO_KEY=46B5721DBBD2996A
+ARG QGIS_REPO_KEY=2D7E3441A707FDB3E7059441D155B8E6A419C5BE
 
 ARG DISTRIBUTION_CODENAME
 ENV LANG C.UTF-8

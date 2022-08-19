@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.1
+Type=Application
+Name=QGIS docker 3.22 
+Icon=/home/regis/APPS/QGIS3/qgis3_ltr/share/icons/hicolor/32x32/apps/qgis.png
+Exec=/home/regis/APPS/QGIS3/qgis_3_22_release_docker.sh
+Terminal=true
+Actions=
+Categories=QGIS;X-GNOME-Other;
+StartupNotify=true
