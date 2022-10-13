@@ -35,6 +35,16 @@ Install it
 
 `xdg-desktop-menu install ~/.local/share/applications/docker-qgis-3_26.desktop`
 
+
+## Want to run it from another machine using ssh adn X11 forwarding?
+
+on your local client:
+
+`ssh -XC -c aes192-ctr myremoteserver`
+
+then in the server :
+
+
  
 # How to maintain and upgrade the image when QGIS upgrades ?
 
