@@ -13,12 +13,17 @@ USER_NAME=`basename $HOME`
 docker run --rm \
     -i -t \
     -v ${HOME}:/home/${USER_NAME} \
-    -v /media:/media \
     -v /tmp/.X11-unix:/tmp/.X11-unix \
-    -e DISPLAY=unix$DISPLAY \
+    -v /media:/media \
+    -e DISPLAY=$DISPLAY \
+    -v /usr/bin/xdg-open:/usr/bin/xdg-open:ro \
     -e HHHOME=${HOME} \
     -e PGSERVICEFILE=${HOME}/.pg_service.conf \
     --net=host --privileged \
-    qgis_local:3.26    
-# to add parameters, you can launch with additional options :
-    # qgis_local:3.10 --profiles-path  ${HOME}/mycustomprofilespath $*
+    qgis_local:3.26
+    
+    #--configpath /home/${USER_NAME}/.local/share/QGIS/QGIS3/profiles/
+
+# you can change this last line to pass  startup options to QGIS
+# If you want to use another location for qgis profile, you can do this for instance, using a .qgis2_docker directory instead of the default .qgis2 :
+#  jancelindocker-qgis-desktop:2.18 /start.sh --configpath /home/${USER_NAME}/.qgis2_docker
