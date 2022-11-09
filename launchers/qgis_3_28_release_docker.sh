@@ -20,10 +20,9 @@ docker run --rm \
     -e HHHOME=${HOME} \
     -e PGSERVICEFILE=${HOME}/.pg_service.conf \
     --net=host --privileged \
-    qgis_local:3.22
+    qgis_local:3.28
     
-    #  qgis_local:3.14 --profiles-path  ${HOME}/OSLANDIA/support/gendarmerie_stsi2/profil_dev $*
-
+    
 
 # you can change this last line to pass  startup options to QGIS
 # If you want to use another location for qgis profile, you can do this for instance, using a .qgis2_docker directory instead of the default .qgis2 :

@@ -25,7 +25,7 @@ RUN wget -O /etc/apt/keyrings/qgis-archive-keyring.gpg https://download.qgis.org
 
 
 # Add qgis.org repo
-RUN echo "deb [signed-by=/etc/apt/keyrings/qgis-archive-keyring.gpg] http://qgis.org/ubuntu-ltr ""${DISTRIBUTION_CODENAME}"" main" | tee /etc/apt/sources.list.d/qgis.list
+RUN echo "deb [signed-by=/etc/apt/keyrings/qgis-archive-keyring.gpg] http://qgis.org/ubuntu ""${DISTRIBUTION_CODENAME}"" main" | tee /etc/apt/sources.list.d/qgis.list
 
 # install QGIS
 RUN apt-get update && \

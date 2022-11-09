@@ -8,15 +8,15 @@ Some drawbacks however, you can't launch a file explorer or internet browser fro
 
 checkout the branch dedicated to your QGIS version :
 
-`git checkout 3.22
+`git checkout 3.28
 
 Build the image locally with the according version tag:
 
-`docker build -t     qgis_local:3.22 ./ `
+`docker build -t     qgis_local:3.28 ./ `
 
 Copy the executable file that runs QGIS on your host:
 
-`cp qgis ~/APPS/QGIS3/qgis_docker_3.22`
+`cp qgis ~/APPS/QGIS3/qgis_docker_3.28`
 
 
 Create a desktop launcher pointing to this sh script. the /launcher directory offers some .desktop templates. 
