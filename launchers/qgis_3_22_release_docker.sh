@@ -13,9 +13,10 @@ USER_NAME=`basename $HOME`
 docker run --rm \
     -i -t \
     -v ${HOME}:/home/${USER_NAME} \
-    -v /data:/data \
     -v /tmp/.X11-unix:/tmp/.X11-unix \
+    -v /data:/data \
     -e DISPLAY=unix$DISPLAY \
+    -v /usr/bin/xdg-open:/usr/bin/xdg-open:ro \
     -e HHHOME=${HOME} \
     -e PGSERVICEFILE=${HOME}/.pg_service.conf \
     --net=host --privileged \

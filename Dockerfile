@@ -1,4 +1,4 @@
-ARG DISTRIBUTION_CODENAME=impish
+ARG DISTRIBUTION_CODENAME=jammy
 
 FROM ubuntu:${DISTRIBUTION_CODENAME}
 LABEL org.opencontainers.image.authors="regis.haubourg@gmail.com"
@@ -17,17 +17,15 @@ ARG QT_DEBUG_PLUGINS=1
 # LAYER 1
 
 RUN apt-get -y update
-RUN apt-get install -y gnupg apt-transport-https ca-certificates libqt5sql5-psql
+RUN apt-get install -y gnupg apt-transport-https ca-certificates wget software-properties-common libqt5sql5-psql python3-requests python3-urllib3 wget
 
-# # Add ubuntugis unstable repo
-# RUN echo "deb http://ppa.launchpad.net/ubuntugis/ubuntugis-unstable/ubuntu  focal main" >> /etc/apt/sources.list
-# RUN gpg --keyserver keyserver.ubuntu.com --recv 6B827C12C2D425E227EDCA75089EBE08314DF160
-# RUN gpg --export --armor 6B827C12C2D425E227EDCA75089EBE08314DF160 | apt-key add -
+# add key 
+RUN mkdir -m755 -p /etc/apt/keyrin
+RUN wget -O /etc/apt/keyrings/qgis-archive-keyring.gpg https://download.qgis.org/downloads/qgis-archive-keyring.gpg
+
 
 # Add qgis.org repo
-RUN echo "deb http://qgis.org/ubuntu ""$DISTRIBUTION_CODENAME"" main" >> /etc/apt/sources.list
-RUN gpg --keyserver keyserver.ubuntu.com --recv ${QGIS_REPO_KEY}
-RUN gpg --export --armor ${QGIS_REPO_KEY} | apt-key add -
+RUN echo "deb [signed-by=/etc/apt/keyrings/qgis-archive-keyring.gpg] http://qgis.org/ubuntu-ltr ""${DISTRIBUTION_CODENAME}"" main" | tee /etc/apt/sources.list.d/qgis.list
 
 # install QGIS
 RUN apt-get update && \
