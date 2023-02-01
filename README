@@ -18,16 +18,23 @@ or with a namespace to push the image to a docker registry. Here with github reg
 
 `docker build -t ghcr.io/haubourg/qgis_local:3.28 ./`
 
+Push to a docker registry
+```sh
+export CR_PAT=[yourtokenhere]
+echo $CR_PAT | docker login ghcr.io -u haubourg --password-stdin
+docker push  ghcr.io/haubourg/qgis_local:3.28`
+```
+If you need the image on another machine
+
+`
+docker pull  ghcr.io/haubourg/qgis_local:3.28
+`
+
+
 Copy the executable file that runs QGIS on your host:
 
 `cp qgis ~/APPS/QGIS3/qgis_docker_3.28`
 
-Push to a docker registry
-`docker push  ghcr.io/haubourg/qgis_local:3.28`
-
-If you need the image on another machine
-
-`docker pull  ghcr.io/haubourg/qgis_local:3.28`
 
 
 
