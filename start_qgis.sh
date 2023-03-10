@@ -20,7 +20,7 @@ docker run --rm \
     -e HHHOME=${HOME} \
     -e PGSERVICEFILE=${HOME}/.pg_service.conf \
     --net=host --privileged \
-    ghcr.io/haubourg/qgis_local:3.28
+    ghcr.io/haubourg/qgis_local:3.30
     
     #--configpath /home/${USER_NAME}/.local/share/QGIS/QGIS3/profiles/
 

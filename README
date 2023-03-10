@@ -8,7 +8,7 @@ Some drawbacks however, you can't launch a file explorer or internet browser fro
 
 define your target version
 
-`QGIS_VERSION=3.10`
+`QGIS_VERSION=3.30`
 
 checkout the branch dedicated to your QGIS version :
 
@@ -27,13 +27,13 @@ Create a desktop launcher pointing to this sh script. the /launcher directory of
 
 Deploy it to your local folder (assuming using GNOME flavor):
 
-`cp launchers/qgis_3_22.desktop ~/.local/share/applications/docker-qgis-3_22.desktop`
+`cp launchers/qgis_latest.desktop ~/.local/share/applications/docker-qgis-3_30.desktop`
 
 Edit it to fix versions
 
 Install it 
 
-`xdg-desktop-menu install ~/.local/share/applications/docker-qgis-3_26.desktop`
+`xdg-desktop-menu install ~/.local/share/applications/docker-qgis-3_30.desktop`
 
 
 ## Want to run it from another machine using ssh adn X11 forwarding?
