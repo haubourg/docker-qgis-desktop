@@ -8,8 +8,6 @@ USER_NAME=`basename $HOME`
 
 # Users home is mounted as home
 # --rm will remove the container as soon as it ends
-
-
 docker run --rm \
     -i -t \
     -v ${HOME}:/home/${USER_NAME} \
@@ -19,6 +17,6 @@ docker run --rm \
     -e HHHOME=${HOME} \
     -e PGSERVICEFILE=${HOME}/.pg_service.conf \
     --net=host --privileged \
-    qgis_local:3.30
+    ghcr.io/haubourg/qgis_local:3.30
 # to add parameters, you can launch with additional options :
     # qgis_local:3.10 --profiles-path  ${HOME}/mycustomprofilespath $*

@@ -20,7 +20,7 @@ Build the image locally with the according version tag:
 
 Copy the executable file that runs QGIS on your host:
 
-`cp qgis ~/APPS/QGIS3/qgis_docker_${QGIS_VERSION}.sh`
+`cp qgis ~/APPS/QGIS3/qgis_docker_${QGIS_VERSION}.
 
 
 Create a desktop launcher pointing to this sh script. the /launcher directory offers some .desktop templates. 
