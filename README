@@ -4,11 +4,45 @@ This allows to have as much parallel versions as you like and choose carefully w
 
 Some drawbacks however, you can't launch a file explorer or internet browser from QGIS, as there is no such thing in the guest container.  (If you know a way to take benefit of the host's ressources, please let me know)
 
-# How to build 
+
+# How to use an existing image 
+
+Latest images are manually pushed to github registry. 
+
+to use one, just copy `start_qgis.sh` on your computer and execute it.
+
+
+## Create a desktop launcher pointing to this sh script. 
+
+the /launcher directory offers some .desktop templates. 
+
+Deploy it to your local folder (assuming using GNOME flavor):
+
+`cp launchers/qgis_latest.desktop ~/.local/share/applications/docker-qgis-3_34.desktop`
+
+Edit it to fix versions
+
+Install it 
+
+`xdg-desktop-menu install ~/.local/share/applications/docker-qgis-3_34.desktop`
+
+
+## Want to run it from another machine using ssh adn X11 forwarding?
+
+on your local client:
+
+`ssh -XC -c aes192-ctr myremoteserver`
+
+
+
+
+# How to build a specific image 
+
+you want to customize your image or build it for another version of QGIS? Here is how to build it. 
 
 define your target version
 
-`QGIS_VERSION=3.30`
+`QGIS_VERSION=3.34`
 
 checkout the branch dedicated to your QGIS version :
 
@@ -22,27 +56,6 @@ Copy the executable file that runs QGIS on your host:
 
 `cp qgis ~/APPS/QGIS3/qgis_docker_${QGIS_VERSION}.
 
-
-Create a desktop launcher pointing to this sh script. the /launcher directory offers some .desktop templates. 
-
-Deploy it to your local folder (assuming using GNOME flavor):
-
-`cp launchers/qgis_latest.desktop ~/.local/share/applications/docker-qgis-3_30.desktop`
-
-Edit it to fix versions
-
-Install it 
-
-`xdg-desktop-menu install ~/.local/share/applications/docker-qgis-3_30.desktop`
-
-
-## Want to run it from another machine using ssh adn X11 forwarding?
-
-on your local client:
-
-`ssh -XC -c aes192-ctr myremoteserver`
-
-then in the server :
 
 
  
