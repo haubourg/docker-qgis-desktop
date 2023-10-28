@@ -20,9 +20,9 @@ docker run --rm \
     -e HHHOME=${HOME} \
     -e PGSERVICEFILE=${HOME}/.pg_service.conf \
     --net=host --privileged \
-    ghcr.io/haubourg/qgis_local:3.30
     
     #--configpath /home/${USER_NAME}/.local/share/QGIS/QGIS3/profiles/
+	ghcr.io/haubourg/qgis_local:3.34
 
 # you can change this last line to pass  startup options to QGIS
 # If you want to use another location for qgis profile, you can do this for instance, using a .qgis2_docker directory instead of the default .qgis2 :
