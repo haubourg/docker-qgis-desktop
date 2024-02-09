@@ -52,6 +52,11 @@ Build the image locally with the according version tag:
 
 `docker build -t     qgis_local:${QGIS_VERSION} ./ `
 
+
+Build the image to push to a registry (here is mine)  :
+
+`docker build --no-cache -t ghcr.io/haubourg/qgis_local:3.34 ./è
+
 Copy the executable file that runs QGIS on your host:
 
 `cp qgis ~/APPS/QGIS3/qgis_docker_${QGIS_VERSION}.
