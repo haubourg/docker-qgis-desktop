@@ -17,6 +17,6 @@ docker run --rm \
     -e HHHOME=${HOME} \
     -e PGSERVICEFILE=${HOME}/.pg_service.conf \
     --net=host --privileged \
-    ghcr.io/haubourg/qgis_local:3.30
+    ghcr.io/haubourg/qgis_local:3.34
 # to add parameters, you can launch with additional options :
     # qgis_local:3.10 --profiles-path  ${HOME}/mycustomprofilespath $*
