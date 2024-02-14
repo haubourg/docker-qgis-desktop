@@ -11,6 +11,10 @@ Latest images are manually pushed to github registry.
 
 to use one, just copy `start_qgis.sh` on your computer and execute it.
 
+Deploy the startup script to a standard location : 
+
+`QGIS_VERSION=3.34`
+`cp qgis ~/APPS/QGIS3/qgis_docker_${QGIS_VERSION}.sh`
 
 ## Create a desktop launcher pointing to this sh script. 
 
