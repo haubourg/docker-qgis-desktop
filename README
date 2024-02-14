@@ -61,6 +61,14 @@ Build the image to push to a registry (here is mine)  :
 
 `docker build --no-cache -t ghcr.io/haubourg/qgis_local:3.34 ./è
 
+Push to registry 
+
+`export CR_PAT=githubtokenhere`
+`echo $CR_PAT | docker login ghcr.io -u haubourg --password-stdin`
+`docker push ghcr.io/haubourg/qgis_local:3.34`
+
+
+
 Copy the executable file that runs QGIS on your host:
 
 `cp qgis ~/APPS/QGIS3/qgis_docker_${QGIS_VERSION}.
