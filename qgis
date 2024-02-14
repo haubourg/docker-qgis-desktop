@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Should be platform neutral - at least working on Linux and Windows
-USER_NAME=`basename $HOME`
+USER_NAME=$(basename $HOME)
 
 # HHHOME is used to pass the HOME directory of the user running qgis
 # and is used in "start.sh" to create the same user within the container.
@@ -9,14 +9,15 @@ USER_NAME=`basename $HOME`
 # Users home is mounted as home
 # --rm will remove the container as soon as it ends
 docker run --rm \
-    -i -t \
-    -v ${HOME}:/home/${USER_NAME} \
-    -v /media:/media \
-    -v /tmp/.X11-unix:/tmp/.X11-unix \
-    -e DISPLAY=unix$DISPLAY \
-    -e HHHOME=${HOME} \
-    -e PGSERVICEFILE=${HOME}/.pg_service.conf \
-    --net=host --privileged \
-    ghcr.io/haubourg/qgis_local:3.34
+	-i -t \
+	-v ${HOME}:/home/${USER_NAME} \
+	-v /usr/bin/xdg-open:/usr/bin/xdg-open:ro \
+	-v /media:/media \
+	-v /tmp/.X11-unix:/tmp/.X11-unix \
+	-e DISPLAY=unix$DISPLAY \
+	-e HHHOME=${HOME} \
+	-e PGSERVICEFILE=${HOME}/.pg_service.conf \
+	--net=host --privileged \
+	ghcr.io/haubourg/qgis_local:3.34
 # to add parameters, you can launch with additional options :
-    # qgis_local:3.10 --profiles-path  ${HOME}/mycustomprofilespath $*
+# qgis_local:3.10 --profiles-path  ${HOME}/mycustomprofilespath $*
