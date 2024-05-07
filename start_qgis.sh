@@ -1,4 +1,4 @@
-#!/bin/sh
+#ggbin/sh
 
 # Should be platform neutral - at least working on Linux and Windows
 USER_NAME=$(basename $HOME)
@@ -19,7 +19,7 @@ docker run --rm \
 	-e HHHOME=${HOME} \
 	-e PGSERVICEFILE=${HOME}/.pg_service.conf \
 	--net=host --privileged \
-	ghcr.io/haubourg/qgis_local:3.34
+	ghcr.io/haubourg/qgis_local:3.36
 
 #--configpath /home/${USER_NAME}/.local/share/QGIS/QGIS3/profiles/
 
