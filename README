@@ -30,14 +30,13 @@ Install it
 
 `xdg-desktop-menu install ~/.local/share/applications/docker-qgis-3.40.desktop`
 
+More : https://www.cyberciti.biz/howto/how-to-install-and-edit-desktop-files-on-linux-desktop-entries/
 
-## Want to run it from another machine using ssh adn X11 forwarding?
+## Run it from another machine using ssh and X11 forwarding?
 
 on your local client:
 
 `ssh -XC -c aes192-ctr myremoteserver`
-
-
 
 
 # How to build a specific image 
@@ -71,11 +70,9 @@ Push to registry
 
 Copy the executable file that runs QGIS on your host:
 
-`cp qgis ~/APPS/QGIS3/qgis_docker_${QGIS_VERSION}`
+`cp qgis ~/APPS/QGIS3/qgis_docker_${QGIS_VERSION}.sh`
 
 
-
- 
 # How to maintain and upgrade the image when QGIS upgrades ?
 
 
