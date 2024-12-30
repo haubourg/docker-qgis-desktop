@@ -28,6 +28,11 @@ Deploy it to your local folder (assuming using GNOME flavor):
  
 # How to maintain and upgrade the image when QGIS upgrades ?
 
+
+Raise version in all files 
+
+` find . -not -path '*/\.git/*'  -exec sed -i  's/3.34/3.38/g' '{}' \;`
+
 Just rerun the docker build command
 
 From time to time dependencies and base image will change, as much as GPG key of QGIS repository. 

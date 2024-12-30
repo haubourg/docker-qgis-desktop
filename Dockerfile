@@ -35,10 +35,8 @@ ENV LANG fr_FR.UTF-8
 ENV LANGUAGE fr_FR.UTF-8
 
 # # Called when the Docker image is started in the container
-
+# this version with entry point allows to pass parameters to QGIS (like profiles_path or project, etc..)
 COPY ./start.sh /
 ENTRYPOINT ["/start.sh"]
 CMD []
-# ADD start.sh /start.sh
 RUN chmod 0755 /start.sh
-# CMD /start.sh

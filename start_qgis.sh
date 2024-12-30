@@ -1,0 +1,28 @@
+#!/bin/sh
+
+# Should be platform neutral - at least working on Linux and Windows
+USER_NAME=$(basename $HOME)
+
+# HHHOME is used to pass the HOME directory of the user running qgis
+# and is used in "start.sh" to create the same user within the container.
+
+# Users home is mounted as home
+# --rm will remove the container as soon as it ends
+
+docker run --rm \
+	-i -t \
+	-v ${HOME}:/home/${USER_NAME} \
+	-v /tmp/.X11-unix:/tmp/.X11-unix \
+	-v /media:/media \
+	-e DISPLAY=$DISPLAY \
+	-v /usr/bin/xdg-open:/usr/bin/xdg-open:ro \
+	-e HHHOME=${HOME} \
+	-e PGSERVICEFILE=${HOME}/.pg_service.conf \
+	--net=host --privileged \
+	ghcr.io/haubourg/qgis_local:3.38
+
+#--configpath /home/${USER_NAME}/.local/share/QGIS/QGIS3/profiles/
+
+# you can change this last line to pass  startup options to QGIS
+# If you want to use another location for qgis profile, you can do this for instance, using a .qgis2_docker directory instead of the default .qgis2 :
+#  jancelindocker-qgis-desktop:2.18 /start.sh --configpath /home/${USER_NAME}/.qgis2_docker
