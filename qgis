@@ -16,6 +16,7 @@ docker run --rm \
     -v ${HOME}:/home/${USER_NAME} \
     -v /usr/bin/xdg-open:/usr/bin/xdg-open:ro \
     -v /media:/media \
+    -v /data:/data \
     -v /tmp/.X11-unix:/tmp/.X11-unix \
     -e DISPLAY=unix$DISPLAY \
     -e HHHOME=${HOME} \
