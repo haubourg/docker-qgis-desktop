@@ -1,24 +1,30 @@
-# this recipe allows to build QGIS with docker and run it as a desktop application.
+# this recipe allows to build QGIS with docker and run it as a desktop application
 
-This allows to have as much parallel versions as you like and choose carefully which base image and dependencies you want. 
+This allows to have as much parallel versions as you like and choose carefully which base image and dependencies you want.
 
 Some drawbacks however, you can't launch a file explorer or internet browser from QGIS, as there is no such thing in the guest container.  (If you know a way to take benefit of the host's ressources, please let me know)
 
+# How to use an existing image
 
-# How to use an existing image 
-
-Latest images are manually pushed to github registry. 
+Latest images are manually pushed to github registry.
 
 to use one, just copy `start_qgis.sh` on your computer and execute it.
 
-Deploy the startup script to a standard location : 
+Deploy the startup script to a standard location :
 
-`QGIS_VERSION=3.44`
-`cp qgis ~/APPS/QGIS3/qgis_docker_${QGIS_VERSION}.sh`
+```bash
+QGIS_VERSION=3.44
+cp start_qgis.sh ~/apps/QGIS3/qgis_docker_${QGIS_VERSION}.sh
+```
 
-## Create a desktop launcher pointing to this sh script. 
+```fish
+set QGIS_VERSION 3.44
+cp start_qgis.sh ~/apps/QGIS3/qgis_docker_{$QGIS_VERSION}.sh
+```
 
-the /launcher directory offers some .desktop templates. 
+## Create a desktop launcher pointing to this sh script
+
+the /launcher directory offers some .desktop templates.
 
 Deploy it to your local folder (assuming using GNOME flavor):
 
@@ -26,10 +32,9 @@ Deploy it to your local folder (assuming using GNOME flavor):
 
 Edit it to fix versions
 
-Install it 
+Install it
 
 `xdg-desktop-menu install ~/.local/share/applications/docker-qgis-3.44.desktop`
-
 
 ## Want to run it from another machine using ssh adn X11 forwarding?
 
@@ -37,12 +42,9 @@ on your local client:
 
 `ssh -XC -c aes192-ctr myremoteserver`
 
+# How to build a specific image
 
-
-
-# How to build a specific image 
-
-you want to customize your image or build it for another version of QGIS? Here is how to build it. 
+you want to customize your image or build it for another version of QGIS? Here is how to build it.
 
 define your target version
 
@@ -54,36 +56,29 @@ checkout the branch dedicated to your QGIS version :
 
 Build the image locally with the according version tag:
 
-`docker build -t     qgis_local:${QGIS_VERSION} ./ `
-
+`docker build -t     qgis_local:${QGIS_VERSION} ./`
 
 Build the image to push to a registry (here is mine)  :
 
 `docker build --no-cache -t ghcr.io/haubourg/qgis_local:3.44 ./è
 
-Push to registry 
+Push to registry
 
 `export CR_PAT=githubtokenhere`
 `echo $CR_PAT | docker login ghcr.io -u haubourg --password-stdin`
 `docker push ghcr.io/haubourg/qgis_local:3.44`
 
-
-
 Copy the executable file that runs QGIS on your host:
 
 `cp qgis ~/APPS/QGIS3/qgis_docker_${QGIS_VERSION}.
 
-
-
- 
 # How to maintain and upgrade the image when QGIS upgrades ?
 
+Raise version in all files
 
-Raise version in all files 
-
-` find . -not -path '*/\.git/*'  -exec sed -i  's/3.34/3.44/g' '{}' \;`
+`find . -not -path '*/\.git/*'  -exec sed -i  's/3.34/3.44/g' '{}' \;`
 
 Just rerun the docker build command
 
-From time to time dependencies and base image will change, as much as GPG key of QGIS repository. 
+From time to time dependencies and base image will change, as much as GPG key of QGIS repository.
 These can be changed as parameters in the Dockerfile

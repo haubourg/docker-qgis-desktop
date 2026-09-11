@@ -1,4 +1,4 @@
-ARG DISTRIBUTION_CODENAME=resolute
+ARG DISTRIBUTION_CODENAME=noble
 
 FROM ubuntu:${DISTRIBUTION_CODENAME}
 LABEL org.opencontainers.image.authors="regis.haubourg@gmail.com"

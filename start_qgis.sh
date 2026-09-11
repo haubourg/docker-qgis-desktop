@@ -1,4 +1,5 @@
 #!/bin/sh
+xhost +local:
 
 # Should be platform neutral - at least working on Linux and Windows
 USER_NAME=$(basename $HOME)
@@ -10,16 +11,18 @@ USER_NAME=$(basename $HOME)
 # --rm will remove the container as soon as it ends
 
 docker run --rm \
-	-i -t \
-	-v ${HOME}:/home/${USER_NAME} \
-	-v /tmp/.X11-unix:/tmp/.X11-unix \
-	-v /media:/media \
-	-e DISPLAY=$DISPLAY \
-	-v /usr/bin/xdg-open:/usr/bin/xdg-open:ro \
-	-e HHHOME=${HOME} \
-	-e PGSERVICEFILE=${HOME}/.pg_service.conf \
-	--net=host --privileged \
-	ghcr.io/haubourg/qgis_local:3.44
+  -i -t \
+  -v ${HOME}:/home/${USER_NAME} \
+  -v /tmp/.X11-unix:/tmp/.X11-unix \
+  -v /media:/media \
+  -e DISPLAY=$DISPLAY \
+  -v /usr/bin/xdg-open:/usr/bin/xdg-open:ro \
+  -e HHHOME=${HOME} \
+  -e PGSERVICEFILE=${HOME}/.pg_service.conf \
+  --net=host --privileged \
+  ghcr.io/haubourg/qgis_local:3.44
+
+xhost -local:
 
 #--configpath /home/${USER_NAME}/.local/share/QGIS/QGIS3/profiles/
 
