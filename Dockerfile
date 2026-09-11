@@ -1,4 +1,4 @@
-ARG DISTRIBUTION_CODENAME=jammy
+ARG DISTRIBUTION_CODENAME=resolute
 
 FROM ubuntu:${DISTRIBUTION_CODENAME}
 LABEL org.opencontainers.image.authors="regis.haubourg@gmail.com"
@@ -8,7 +8,7 @@ LABEL org.opencontainers.image.authors="regis.haubourg@gmail.com"
 ARG QGIS_REPO_KEY=2D7E3441A707FDB3E7059441D155B8E6A419C5BE
 
 ARG DISTRIBUTION_CODENAME
-ENV LANG C.UTF-8
+ENV LANG=C.UTF-8
 ARG DEBIAN_FRONTEND=noninteractive
 # debug traces for QT 
 ARG QT_DEBUG_PLUGINS=1
@@ -31,15 +31,15 @@ RUN echo "deb [signed-by=/etc/apt/keyrings/qgis-archive-keyring.gpg] http://qgis
 # install QGIS
 
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends --no-install-suggests qgis qgis-plugin-grass python3-pandas\
-    locales locales-all && \
-    rm -rf /var/lib/apt/lists/*
+  apt-get install -y --no-install-recommends --no-install-suggests qgis qgis-plugin-grass python3-pandas\
+  locales locales-all && \
+  rm -rf /var/lib/apt/lists/*
 #--no-install-recommends
 
 #locales
-ENV LC_ALL fr_FR.UTF-8
-ENV LANG fr_FR.UTF-8
-ENV LANGUAGE fr_FR.UTF-8
+ENV LC_ALL=fr_FR.UTF-8
+ENV LANG=fr_FR.UTF-8
+ENV LANGUAGE=fr_FR.UTF-8
 
 # # Called when the Docker image is started in the container
 # this version with entry point allows to pass parameters to QGIS (like profiles_path or project, etc..)

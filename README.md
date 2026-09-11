@@ -13,7 +13,7 @@ to use one, just copy `start_qgis.sh` on your computer and execute it.
 
 Deploy the startup script to a standard location : 
 
-`QGIS_VERSION=3.38`
+`QGIS_VERSION=3.44`
 `cp qgis ~/APPS/QGIS3/qgis_docker_${QGIS_VERSION}.sh`
 
 ## Create a desktop launcher pointing to this sh script. 
@@ -22,13 +22,13 @@ the /launcher directory offers some .desktop templates.
 
 Deploy it to your local folder (assuming using GNOME flavor):
 
-`cp launchers/qgis_latest.desktop ~/.local/share/applications/docker-qgis-3.38.desktop`
+`cp launchers/qgis_latest.desktop ~/.local/share/applications/docker-qgis-3.44.desktop`
 
 Edit it to fix versions
 
 Install it 
 
-`xdg-desktop-menu install ~/.local/share/applications/docker-qgis-3.38.desktop`
+`xdg-desktop-menu install ~/.local/share/applications/docker-qgis-3.44.desktop`
 
 
 ## Want to run it from another machine using ssh adn X11 forwarding?
@@ -46,7 +46,7 @@ you want to customize your image or build it for another version of QGIS? Here i
 
 define your target version
 
-`QGIS_VERSION=3.38`
+`QGIS_VERSION=3.44`
 
 checkout the branch dedicated to your QGIS version :
 
@@ -59,13 +59,13 @@ Build the image locally with the according version tag:
 
 Build the image to push to a registry (here is mine)  :
 
-`docker build --no-cache -t ghcr.io/haubourg/qgis_local:3.38 ./è
+`docker build --no-cache -t ghcr.io/haubourg/qgis_local:3.44 ./è
 
 Push to registry 
 
 `export CR_PAT=githubtokenhere`
 `echo $CR_PAT | docker login ghcr.io -u haubourg --password-stdin`
-`docker push ghcr.io/haubourg/qgis_local:3.38`
+`docker push ghcr.io/haubourg/qgis_local:3.44`
 
 
 
@@ -81,7 +81,7 @@ Copy the executable file that runs QGIS on your host:
 
 Raise version in all files 
 
-` find . -not -path '*/\.git/*'  -exec sed -i  's/3.34/3.38/g' '{}' \;`
+` find . -not -path '*/\.git/*'  -exec sed -i  's/3.34/3.44/g' '{}' \;`
 
 Just rerun the docker build command
 
