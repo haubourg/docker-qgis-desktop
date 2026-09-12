@@ -1,4 +1,4 @@
-ARG DISTRIBUTION_CODENAME=noble
+ARG DISTRIBUTION_CODENAME=resolute
 
 FROM ubuntu:${DISTRIBUTION_CODENAME}
 LABEL org.opencontainers.image.authors="regis.haubourg@gmail.com"
@@ -25,13 +25,13 @@ RUN wget -O /etc/apt/keyrings/qgis-archive-keyring.gpg https://download.qgis.org
 
 
 # Add qgis.org repo
-RUN echo "deb [signed-by=/etc/apt/keyrings/qgis-archive-keyring.gpg] http://qgis.org/ubuntu ""${DISTRIBUTION_CODENAME}"" main" | tee /etc/apt/sources.list.d/qgis.list
+RUN echo "deb [signed-by=/etc/apt/keyrings/qgis-archive-keyring.gpg] http://qgis.org/ubuntu-nightly ""${DISTRIBUTION_CODENAME}"" main" | tee /etc/apt/sources.list.d/qgis.list
 
 
 # install QGIS
 
 RUN apt-get update && \
-  apt-get install -y --no-install-recommends --no-install-suggests qgis qgis-plugin-grass python3-pandas\
+  apt-get install -y --no-install-recommends --no-install-suggests qgis-dev qgis-plugin-grass python3-pandas\
   locales locales-all && \
   rm -rf /var/lib/apt/lists/*
 #--no-install-recommends

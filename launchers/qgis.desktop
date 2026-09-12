@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.1
+Type=Application
+Name=QGIS docker 4.x
+Icon=/home/regis/apps/QGIS4/qgis-icon.svg
+Exec=/home/regis/apps/QGIS4/qgis_docker_4.x.sh
+Terminal=true
+Actions=
+Categories=X-GNOME-Other;
+StartupNotify=true

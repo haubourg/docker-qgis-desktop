@@ -20,7 +20,7 @@ docker run --rm \
   -e HHHOME=${HOME} \
   -e PGSERVICEFILE=${HOME}/.pg_service.conf \
   --net=host --privileged \
-  ghcr.io/haubourg/qgis_local:3.44
+  ghcr.io/haubourg/qgis_local:4.x
 
 xhost -local:
 
