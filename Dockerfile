@@ -1,4 +1,4 @@
-ARG DISTRIBUTION_CODENAME=noble
+ARG DISTRIBUTION_CODENAME=resolute
 
 FROM ubuntu:${DISTRIBUTION_CODENAME}
 LABEL org.opencontainers.image.authors="regis.haubourg@gmail.com"
@@ -17,7 +17,7 @@ ARG QT_DEBUG_PLUGINS=1
 # LAYER 1
 
 RUN apt-get -y update
-RUN apt-get install -y gnupg apt-transport-https ca-certificates wget software-properties-common libqt5sql5-psql python3-requests python3-urllib3 wget
+RUN apt-get install -y gnupg apt-transport-https ca-certificates wget software-properties-common python3-requests python3-urllib3 wget
 
 # add key 
 RUN mkdir -m755 -p /etc/apt/keyrin
@@ -25,7 +25,7 @@ RUN wget -O /etc/apt/keyrings/qgis-archive-keyring.gpg https://download.qgis.org
 
 
 # Add qgis.org repo
-RUN echo "deb [signed-by=/etc/apt/keyrings/qgis-archive-keyring.gpg] http://qgis.org/ubuntu-ltr ""${DISTRIBUTION_CODENAME}"" main" | tee /etc/apt/sources.list.d/qgis.list
+RUN echo "deb [signed-by=/etc/apt/keyrings/qgis-archive-keyring.gpg] http://qgis.org/ubuntu ""${DISTRIBUTION_CODENAME}"" main" | tee /etc/apt/sources.list.d/qgis.list
 
 
 # install QGIS
