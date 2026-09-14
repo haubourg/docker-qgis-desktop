@@ -13,12 +13,12 @@ to use one, just copy `start_qgis.sh` on your computer and execute it.
 Deploy the startup script to a standard location :
 
 ```bash
-QGIS_VERSION=3.44
+QGIS_VERSION=4.2
 cp start_qgis.sh ~/apps/QGIS3/qgis_docker_${QGIS_VERSION}.sh
 ```
 
 ```fish
-set QGIS_VERSION 3.44
+set QGIS_VERSION 4.2
 cp start_qgis.sh ~/apps/QGIS3/qgis_docker_{$QGIS_VERSION}.sh
 ```
 
@@ -28,13 +28,13 @@ the /launcher directory offers some .desktop templates.
 
 Deploy it to your local folder (assuming using GNOME flavor):
 
-`cp launchers/qgis_latest.desktop ~/.local/share/applications/docker-qgis-3.44.desktop`
+`cp launchers/qgis_latest.desktop ~/.local/share/applications/docker-qgis-4.2.desktop`
 
 Edit it to fix versions
 
 Install it
 
-`xdg-desktop-menu install ~/.local/share/applications/docker-qgis-3.44.desktop`
+`xdg-desktop-menu install ~/.local/share/applications/docker-qgis-4.2.desktop`
 
 ## Want to run it from another machine using ssh adn X11 forwarding?
 
@@ -48,7 +48,7 @@ you want to customize your image or build it for another version of QGIS? Here i
 
 define your target version
 
-`QGIS_VERSION=3.44`
+`QGIS_VERSION=4.2`
 
 checkout the branch dedicated to your QGIS version :
 
@@ -60,13 +60,13 @@ Build the image locally with the according version tag:
 
 Build the image to push to a registry (here is mine)  :
 
-`docker build --no-cache -t ghcr.io/haubourg/qgis_local:3.44 ./è
+`docker build --no-cache -t ghcr.io/haubourg/qgis_local:4.2 ./è
 
 Push to registry
 
 `export CR_PAT=githubtokenhere`
 `echo $CR_PAT | docker login ghcr.io -u haubourg --password-stdin`
-`docker push ghcr.io/haubourg/qgis_local:3.44`
+`docker push ghcr.io/haubourg/qgis_local:4.2`
 
 Copy the executable file that runs QGIS on your host:
 
@@ -76,7 +76,7 @@ Copy the executable file that runs QGIS on your host:
 
 Raise version in all files
 
-`find . -not -path '*/\.git/*'  -exec sed -i  's/3.34/3.44/g' '{}' \;`
+`find . -not -path '*/\.git/*'  -exec sed -i  's/3.34/4.2/g' '{}' \;`
 
 Just rerun the docker build command
 
